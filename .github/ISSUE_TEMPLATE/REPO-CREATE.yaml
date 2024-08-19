@@ -11,5 +11,5 @@ body:
     id: team-name
     attributes:
       label: Team Name in Org
-      description: Provide your team's name in Org which will own this repo
+      description: Provide your team name in Org which will own this repo
       placeholder: ex. devops-enablement
