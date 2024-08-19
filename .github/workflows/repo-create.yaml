@@ -10,7 +10,7 @@ jobs:
     name: Create github repo
     runs-on: ubuntu-latest
     env:
-      PAT: ${{ secrets.PAT }}
+      GH_TOKEN: ${{ secrets.PAT }}
     steps:
       - uses: actions/checkout@v3
       - uses: stefanbuck/github-issue-parser@v3
@@ -33,7 +33,7 @@ jobs:
         run: |
           cd template
           python -m pip install --user cookiecutter
-          cookiecutter https://GauJosh:"${PAT}"@github.com/GauJosh/cookiecutter-template --no-input repo_name=$repo_name team_name=$team_name
+          cookiecutter https://GauJosh:"${GH_TOKEN}"@github.com/GauJosh/cookiecutter-template --no-input repo_name=$repo_name team_name=$team_name
       - name: Push new repo
         run: |
            cd template/"${repo_name}"
