@@ -12,7 +12,7 @@ jobs:
     env:
       GH_TOKEN: ${{ secrets.PAT }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: stefanbuck/github-issue-parser@v3
         id: issue-parser
         with:
@@ -24,7 +24,7 @@ jobs:
           team_name=`jq -r '."team-name"' ${HOME}/issue-parser-result.json`
           echo "repo_name=$repo_name" >> $GITHUB_ENV
           echo "team_name=$team_name" >> $GITHUB_ENV
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           repository: "GauJosh/cookiecutter-template"
           token: ${{ secrets.PAT }}
