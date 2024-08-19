@@ -21,8 +21,8 @@ jobs:
           repo_name=`jq -r '."repo-name"' ${HOME}/issue-parser-result.json`
           team_name=`jq -r '."team-name"' ${HOME}/issue-parser-result.json`
           echo $repo_name $team_name
-          echo $repo_name >> $GITHUB_ENV
-          echo $team_name >> $GITHUB_ENV
+          echo "repo_name=$repo_name" >> $GITHUB_ENV
+          echo "team_name=$team_name" >> $GITHUB_ENV
           # which cookiecutter
       - name: Run Cookiecutter
         uses: andrewthetechie/gha-cookiecutter@main
