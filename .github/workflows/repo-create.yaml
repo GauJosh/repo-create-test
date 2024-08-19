@@ -9,10 +9,6 @@ jobs:
   github-repo-create:
     name: Create github repo
     runs-on: ubuntu-latest
-    env:
-        BODY: ${{ github.event.issue.body }}
-        BODY1: "$(jq '.issue.body' $GITHUB_EVENT_PATH)"
-        # outenv: ${{ steps.issue-parser.outputs }}
     steps:
       - uses: actions/checkout@v3
       - uses: stefanbuck/github-issue-parser@v3
@@ -21,9 +17,10 @@ jobs:
           template-path: .github/ISSUE_TEMPLATE/REPO-CREATE.yaml
       
       - run: cat ${HOME}/issue-parser-result.json
-      # - run: echo $outenv
-      - name: Print issue body
-        run: echo "${BODY}"
-      - name: Print another
-        run: echo "{BODY1}"
+      - run: |
+          repo_name = jq '."repo-name"' ${HOME}/issue-parser-result.json
+          team_name = jq '."team-name"' ${HOME}/issue-parser-result.json
+          echo $repo_name >> $GITHUB_ENV
+          echo $team_name >> $GITHUB_ENV
+          which cookiecutter
            
