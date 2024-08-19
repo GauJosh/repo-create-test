@@ -1,7 +1,9 @@
 name: GitHub Repo Creation
 
 on:
-  issues: created
+  issues:
+    types:
+      - created
 
 jobs:
   github-repo-create:
