@@ -34,6 +34,12 @@ jobs:
           cd template
           python -m pip install --user cookiecutter
           cookiecutter https://GauJosh:"${PAT}"@github.com/GauJosh/cookiecutter-template --no-input repo_name=$repo_name team_name=$team_name
-          ls -lrta
-          pwd
+      - name: Push new repo
+        run: |
+           pwd
+           cd template/"${repo_name}"
+           git init
+           git add .
+           git commit -m "Initial Commit"
+           gh repo create GauJosh/"${repo_name}" --source=. --private --push
            
