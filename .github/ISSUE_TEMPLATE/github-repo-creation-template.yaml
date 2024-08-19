@@ -6,10 +6,10 @@ body:
     attributes:
       label: GitHub Repo Name
       desription: Please provide GitHub Repo Name
-      placeholder: ex: sdp-test-repo-name
+      placeholder: ex. sdp-test-repo-name
   - type: input
     id: team-name
     attributes:
       label: Team Name in Org
       desription: Provide your team's name in Org which will own this repo
-      placeholder: ex: devops-enablement
+      placeholder: ex. devops-enablement
