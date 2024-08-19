@@ -29,17 +29,9 @@ jobs:
         with:
           repository: "GauJosh/cookiecutter-template"
           token: ${{ secrets.PAT }}
-      - name: check cwd
-        run: |
-          pwd
-          ls -alrt
-      - name: Run Cookiecutter
-        uses: andrewthetechie/gha-cookiecutter@main
-        with:
-          template: ./cookiecutter-template
-          cookiecutterValues: '{"repo_name": "$repo_name", "team_name": "team_name"}'
       - name: list files
         run: |
           pwd
           ls -lart
+          ls -lart cookiecutter-template/
            
