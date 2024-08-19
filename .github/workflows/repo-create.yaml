@@ -9,6 +9,8 @@ jobs:
   github-repo-create:
     name: Create github repo
     runs-on: ubuntu-latest
+    env:
+      PAT: ${{ secrets.PAT }}
     steps:
       - uses: actions/checkout@v3
       - uses: stefanbuck/github-issue-parser@v3
@@ -25,13 +27,13 @@ jobs:
       - uses: actions/checkout@v3
         with:
           repository: "GauJosh/cookiecutter-template"
-          token: ${{ secrets.PAT }}
+          token: $PAT
           path: "template"
       - name: list files
         run: |
           cd template
           python -m pip install --user cookiecutter
-          cookiecutter https://github.com/GauJosh/cookiecutter-template --no-input repo_name=$repo_name team_name=$team_name
+          cookiecutter https://GauJosh:$PAT@github.com/GauJosh/cookiecutter-template --no-input repo_name=$repo_name team_name=$team_name
           ls -lrta
           pwd
            
