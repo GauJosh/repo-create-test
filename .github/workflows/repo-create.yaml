@@ -34,5 +34,6 @@ jobs:
         run: |
           pwd
           ls -lart
+          ls -lart ./template
           ls -lart ./template/cookiecutter-template/
            
