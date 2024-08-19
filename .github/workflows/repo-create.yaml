@@ -3,7 +3,7 @@ name: GitHub Repo Creation
 on:
   issues:
     types:
-      - created
+      - opened
 
 jobs:
   github-repo-create:
