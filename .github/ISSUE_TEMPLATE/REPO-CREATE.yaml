@@ -1,4 +1,5 @@
 name: GitHub Repo Creation Request
+description: Repo Creation Form
 title: "[Create GitHub Repo]: "
 body:
   - type: input
