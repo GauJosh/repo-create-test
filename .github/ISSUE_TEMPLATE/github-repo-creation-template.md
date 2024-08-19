@@ -1,14 +1,15 @@
----
-name: GitHub Repo Creation Template
-about: This template requests user inputs for Git Repo Creation
-title: ''
-labels: ''
-assignees: ''
-
----
-
-**Please provide GitHub Repo Name**
-GitHub Repo Name
-
-**Team Name in Org**
-Provide your team's name in Org which will own this repo
+name: GitHub Repo Creation Request
+title: "[Create GitHub Repo]: "
+body:
+  - type: input
+    id: repo-name
+    attributes:
+      label: GitHub Repo Name
+      desription: Please provide GitHub Repo Name
+      placeholder: ex: sdp-test-repo-name
+  - type: input
+    id: team-name
+    attributes:
+      label: Team Name in Org
+      desription: Provide your team's name in Org which will own this repo
+      placeholder: ex: devops-enablement
