@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/checkout@v3
         with:
-          repository: "cookiecutter-template"
+          repository: "GauJosh/cookiecutter-template"
           token: ${{ secrets.GITHUB_TOKEN }}
       - uses: stefanbuck/github-issue-parser@v3
         id: issue-parser
