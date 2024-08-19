@@ -29,9 +29,10 @@ jobs:
         with:
           repository: "GauJosh/cookiecutter-template"
           token: ${{ secrets.PAT }}
+          path: "template"
       - name: list files
         run: |
           pwd
           ls -lart
-          ls -lart cookiecutter-template/
+          ls -lart ./template/cookiecutter-template/
            
