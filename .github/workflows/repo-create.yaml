@@ -1,1 +1,17 @@
 name: GitHub Repo Creation
+
+on:
+  issues: created
+
+jobs:
+  github-repo-create:
+    name: Create github repo
+    runs-on: ubuntu-latest
+    env:
+        BODY: ${{ github.event.issue.body }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: parse issue body
+      - run: print ${{ env.BODY }}
+           
