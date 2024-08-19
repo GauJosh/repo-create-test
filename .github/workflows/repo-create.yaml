@@ -11,6 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
+        with:
+          repository: "cookiecutter-template"
+          token: ${{ secrets.GITHUB_TOKEN }}
       - uses: stefanbuck/github-issue-parser@v3
         id: issue-parser
         with:
@@ -23,11 +27,10 @@ jobs:
           echo $repo_name $team_name
           echo "repo_name=$repo_name" >> $GITHUB_ENV
           echo "team_name=$team_name" >> $GITHUB_ENV
-          # which cookiecutter
       - name: Run Cookiecutter
         uses: andrewthetechie/gha-cookiecutter@main
         with:
-          template: https://github.com/GauJosh/cookiecutter-template
+          template: ./cookiecutter-template
           cookiecutterValues: '{"repo_name": "$repo_name", "team_name": "team_name"}'
       - name: list files
         run: |
