@@ -18,10 +18,19 @@ jobs:
       
       - run: cat ${HOME}/issue-parser-result.json
       - run: |
-          repo_name=`jq '."repo-name"' ${HOME}/issue-parser-result.json`
-          team_name=`jq '."team-name"' ${HOME}/issue-parser-result.json`
+          repo_name=`jq -r '."repo-name"' ${HOME}/issue-parser-result.json`
+          team_name=`jq -r '."team-name"' ${HOME}/issue-parser-result.json`
           echo $repo_name $team_name
           echo $repo_name >> $GITHUB_ENV
           echo $team_name >> $GITHUB_ENV
-          which cookiecutter
+          # which cookiecutter
+      - name: Run Cookiecutter
+        uses: andrewthetechie/gha-cookiecutter@main
+        with:
+          template: https://github.com/GauJosh/cookiecutter-template
+          cookiecutterValues: '{"repo_name": "$repo_name", "team_name": "team_name"}'
+      - name: list files
+        run: |
+          pwd
+          ls -lart
            
