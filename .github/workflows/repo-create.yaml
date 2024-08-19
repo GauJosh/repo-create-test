@@ -11,9 +11,12 @@ jobs:
     runs-on: ubuntu-latest
     env:
         BODY: ${{ github.event.issue.body }}
+        BODY1: "$(jq '.issue.body' $GITHUB_EVENT_PATH)"
     steps:
       - uses: actions/checkout@v3
 
-      - name: parse issue body
-        run: print ${{ env.BODY }}
+      - name: Print issue body
+        run: echo "${BODY}"
+      - name: Print another
+        run: echo "{BODY1}"
            
