@@ -18,8 +18,8 @@ jobs:
       
       - run: cat ${HOME}/issue-parser-result.json
       - run: |
-          repo_name = `jq '."repo-name"' ${HOME}/issue-parser-result.json`
-          team_name = `jq '."team-name"' ${HOME}/issue-parser-result.json`
+          repo_name=`jq '."repo-name"' ${HOME}/issue-parser-result.json`
+          team_name=`jq '."team-name"' ${HOME}/issue-parser-result.json`
           echo $repo_name $team_name
           echo $repo_name >> $GITHUB_ENV
           echo $team_name >> $GITHUB_ENV
