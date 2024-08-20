@@ -17,7 +17,6 @@ jobs:
         id: issue-parser
         with:
           template-path: .github/ISSUE_TEMPLATE/REPO-CREATE.yaml
-      # - run: cat ${HOME}/issue-parser-result.json
       - name: Extract variable from issue body
         run: |
           repo_name=`jq -r '."repo-name"' ${HOME}/issue-parser-result.json`
@@ -31,5 +30,20 @@ jobs:
           repository: "GauJosh/cookiecutter-template"
           token: ${{ secrets.PAT }}
           path: "template"
-      - name: Run cookiecutter and push new repo
-        uses: GauJosh/cookiecutter-template@main
+      - name: list files
+        run: |
+          cd template
+          python -m pip install --user cookiecutter
+          cookiecutter https://GauJosh:"${GH_TOKEN}"@github.com/GauJosh/cookiecutter-template --no-input repo_name=$repo_name team_name=$team_name
+      - name: Push new repo
+        run: |
+           cd template/"${repo_name}"
+           git config --global init.defaultBranch main
+           git config --global user.email "gaurav5289@gmail.com"
+           git config --global user.name "Gaurav Joshi"
+           git init
+           git add .
+           git commit -m "Initial Commit"
+           gh repo create GauJosh/"${repo_name}" --source=. --private --push
+           gh repo edit --add-topic "${apm_number}"
+           
