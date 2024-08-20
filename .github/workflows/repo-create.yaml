@@ -46,7 +46,5 @@ jobs:
            git add .
            git commit -m "Initial Commit"
            gh repo create GauJosh/"${repo_name}" --source=. --private --push
-           echo "Adding topic to repo"
            gh repo edit --add-topic "${apm_number}"
-           echo "Added topic to repo"
            
