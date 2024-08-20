@@ -22,8 +22,10 @@ jobs:
       - run: |
           repo_name=`jq -r '."repo-name"' ${HOME}/issue-parser-result.json`
           team_name=`jq -r '."team-name"' ${HOME}/issue-parser-result.json`
+          apm_number=`jq -r '."apm-number"' ${HOME}/issue-parser-result.json`
           echo "repo_name=$repo_name" >> $GITHUB_ENV
           echo "team_name=$team_name" >> $GITHUB_ENV
+          echo "apm-number=$apm-number" >> $GITHUB_ENV
       - uses: actions/checkout@v4
         with:
           repository: "GauJosh/cookiecutter-template"
@@ -44,4 +46,5 @@ jobs:
            git add .
            git commit -m "Initial Commit"
            gh repo create GauJosh/"${repo_name}" --source=. --private --push
+           gh repo edit --add-topic "${apm-number}"
            

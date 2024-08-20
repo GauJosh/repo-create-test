@@ -14,3 +14,9 @@ body:
       label: Team Name in Org
       description: Provide your team name in Org which will own this repo!
       placeholder: ex. devops-enablement
+  - type: input
+    id: apm-number
+    attributes:
+      label: APM Number for the Application
+      description: Provide AP Number for your Application
+      placeholder: ex. APM00123
