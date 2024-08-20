@@ -18,5 +18,5 @@ body:
     id: apm-number
     attributes:
       label: APM Number for the Application
-      description: Provide AP Number for your Application
-      placeholder: ex. APM00123
+      description: Provide APM Number for your Application
+      placeholder: ex. apm00123
